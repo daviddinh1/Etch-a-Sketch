@@ -34,8 +34,11 @@ function changeColor(){
  if(color === 'rainbow'){
   this.style.backgroundColor = `hsl(${Math.random() *360},100%,50%)`; //later on add a color wheel
  }
- else{
+ else if (color=== 'black'){
   this.style.backgroundColor = 'black';
+ }
+ else{
+  this.style.backgroundColor = 'white';
  }
 }
 
