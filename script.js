@@ -1,52 +1,38 @@
-let color = 'rainbow';
+let container = document.querySelector(".container");
 
-function createBoard(size){
- let board = document.querySelector('.board');
- let squares = board.querySelectorAll('div');
 
- squares.forEach((div) => div.remove());
+function createBoard(){
+  for(let i = 0 ; i < 256 ; i++){
+    const block = document.createElement('div'); //used to create block for grid 
+    block.classList.add("square");
+    block.addEventListener("mouseover", ()=> {
+      block.classList.add("hover");
+    });
+    block.addEventListener("mousedown",()=>{
+      block.classList.add("hover");
+    });
+    container.appendChild(block);
 
- board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
- board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
-
-  let amount = size * size;
-
-  for(let i = 0 ; i <amount; i++){
-   let square = document.createElement('div');
-   square.addEventListener('mouseover',changeColor);
-   square.style.backgroundColor = 'white';
-   board.insertAdjacentElement('beforeend',square);
-   
- }
-}
- 
-createBoard(16);
-
-function changeSize(input){
- createBoard(input);
+  }
 }
 
-function colorChoice(choice){
- color = choice;
+function changeColor(e){
+  e.classList.add("hover");
 }
 
-function changeColor(){
- if(color === 'rainbow'){
-  this.style.backgroundColor = `hsl(${Math.random() *360},100%,50%)`; //later on add a color wheel
- }
- else if (color=== 'black'){
-  this.style.backgroundColor = 'black';
- }
- else{
-  this.style.backgroundColor = 'white';
- }
-}
+createBoard(container);
 
 
 
 
-
-
+/*
+    block.addEventListener("mousedown", () => {
+      block.addEventListener("mouseover",()=>{
+        block.classList.add("hover")
+        console.log("working");
+      });
+    });
+*/
 
 
 
