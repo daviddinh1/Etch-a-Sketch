@@ -2,11 +2,13 @@ let container = document.querySelector(".container");
 
 let isDraw = false;
 
+const btn = document.querySelector("#btn-input")
 
-function createBoard(){
-  for(let i = 0 ; i < 256 ; i++){
+function createBoard(n){
+  n = n * n;
+  for(let i = 0 ; i < n ; i++){
     const block = document.createElement('div'); //used to create block for grid 
-    block.classList.add("square");
+    block.classList.add("square"); //maybe its the class or the container?
     block.addEventListener("mousedown", () => {
       isDraw = true;
     });
@@ -20,29 +22,25 @@ function createBoard(){
         isDraw = false;
       }
     });
-
     container.appendChild(block);
-
   }
+  
 }
 
-function changeColor(e){
-  e.classList.add("hover");
-}
 
-createBoard(container);
+console.log(container.childNodes);
+createBoard(16);
+let size = 0;
+btn.addEventListener('click', ()=>{
+  size = prompt("Please enter a size: "); //get rid of old board to add a new board
+  if (size < 100){
+    while(container.firstChild){ //until theres no more children remove the last one 
+      container.removeChild(container.lastChild);
+    }
+    createBoard(size);
+  }
+});
 
-
-
-
-/*
-    block.addEventListener("mousedown", () => {
-      block.addEventListener("mouseover",()=>{
-        block.classList.add("hover")
-        console.log("working");
-      });
-    });
-*/
 
 
 
