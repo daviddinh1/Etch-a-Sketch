@@ -3,22 +3,18 @@
  src: url(KGNeatlyPrintedSpaced.ttf);
 }
 
-*{
- background-color: #fbf9f6;
-}
+
 .square{
  background-color: black;
- flex: 1 5 auto;
- width: 18.75px;
- height: 18.75px;
- border: 1px solid gray;
+/* width: calc(100%/16); /*depending on the number of the columns or row make it this*/
+ border-color: gray;
+ aspect-ratio: 1/1;
 }
 
 .container{
  display: flex;
  align-items: center;
- max-width: 340px;
- max-height: 300px;
+ max-width: 300px;
  flex-wrap: wrap;
 }
 

@@ -5,9 +5,11 @@ let isDraw = false;
 const btn = document.querySelector("#btn-input")
 
 function createBoard(n){
-  n = n * n;
-  for(let i = 0 ; i < n ; i++){
+  for(let i = 0 ; i < n * n; i++){
     const block = document.createElement('div'); //used to create block for grid 
+    let size = 100/n;
+    block.style.setProperty('width',size + '%');
+
     block.classList.add("square"); //maybe its the class or the container?
     block.addEventListener("mousedown", () => {
       isDraw = true;
@@ -37,7 +39,7 @@ btn.addEventListener('click', ()=>{
     while(container.firstChild){ //until theres no more children remove the last one 
       container.removeChild(container.lastChild);
     }
-    createBoard(size);
+    createBoard(size); //(100/16)% try to figure out how to fix everything this is key apparantly?
   }
 });
 
